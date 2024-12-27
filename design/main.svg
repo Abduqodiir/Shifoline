@@ -1,0 +1,167 @@
+<svg viewBox="0 0 1200 3500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navigation Panel -->
+  <rect x="0" y="0" width="1200" height="80" fill="#ffffff" filter="url(#shadow)"/>
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <circle cx="60" cy="40" r="25" fill="#4299e1"/>
+  <text x="95" y="48" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">ShifoLine</text>
+  <!-- Nav items -->
+  <text x="400" y="48" font-family="Arial" font-size="16" fill="#4a5568">Shifokorlar</text>
+  <text x="520" y="48" font-family="Arial" font-size="16" fill="#4a5568">Mutaxassisliklar</text>
+  <text x="660" y="48" font-family="Arial" font-size="16" fill="#4a5568">Yangiliklar</text>
+  <text x="760" y="48" font-family="Arial" font-size="16" fill="#4a5568">Yordam</text>
+  <rect x="1030" y="25" width="100" height="40" rx="20" fill="#4299e1"/>
+  <text x="1060" y="50" font-family="Arial" font-size="16" fill="#ffffff">Kirish</text>
+
+
+  <!-- Hero Section -->
+  <rect x="0" y="80" width="1200" height="600" fill="#f7fafc"/>
+  <text x="100" y="200" font-family="Arial" font-size="48" font-weight="bold" fill="#1a365d">Professional tibbiy</text>
+  <text x="100" y="270" font-family="Arial" font-size="48" font-weight="bold" fill="#1a365d">maslahat, endi onlayn</text>
+  <text x="100" y="320" font-family="Arial" font-size="18" fill="#4a5568" width="500">24/7 malakali shifokorlardan maslahat oling. Vaqtingizni tejang, sog'ligingizni asrang.</text>
+  
+  <!-- Stats in Hero -->
+  <rect x="100" y="380" width="200" height="100" rx="10" fill="#ffffff"/>
+  <text x="120" y="420" font-family="Arial" font-size="32" font-weight="bold" fill="#4299e1">500+</text>
+  <text x="120" y="450" font-family="Arial" font-size="16" fill="#4a5568">Malakali shifokorlar</text>
+  
+  <rect x="320" y="380" width="200" height="100" rx="10" fill="#ffffff"/>
+  <text x="340" y="420" font-family="Arial" font-size="32" font-weight="bold" fill="#4299e1">10,000+</text>
+  <text x="340" y="450" font-family="Arial" font-size="16" fill="#4a5568">Muvaffaqiyatli maslahatlar</text>
+  
+  <rect x="540" y="380" width="200" height="100" rx="10" fill="#ffffff"/>
+  <text x="560" y="420" font-family="Arial" font-size="32" font-weight="bold" fill="#4299e1">4.9/5</text>
+  <text x="560" y="450" font-family="Arial" font-size="16" fill="#4a5568">Mijozlar reytingi</text>
+
+  <!-- Doctor Search Section -->
+  <rect x="100" y="520" width="1000" height="80" rx="10" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="120" y="535" width="300" height="50" rx="8" fill="#f7fafc"/>
+  <text x="140" y="565" font-family="Arial" font-size="14" fill="#a0aec0">Shifokor yoki kasallik turi</text>
+  <rect x="440" y="535" width="200" height="50" rx="8" fill="#f7fafc"/>
+  <text x="460" y="565" font-family="Arial" font-size="14" fill="#a0aec0">Mutaxassislik</text>
+  <rect x="660" y="535" width="200" height="50" rx="8" fill="#f7fafc"/>
+  <text x="680" y="565" font-family="Arial" font-size="14" fill="#a0aec0">Sana</text>
+  <rect x="880" y="535" width="200" height="50" rx="8" fill="#4299e1"/>
+  <text x="940" y="565" font-family="Arial" font-size="14" fill="#ffffff">QIDIRISH</text>
+
+  <!-- Why Choose Us Section -->
+  <text x="100" y="700" font-family="Arial" font-size="36" font-weight="bold" fill="#2d3748">Nima uchun bizni tanlashadi?</text>
+  
+  <!-- Features -->
+  <rect x="100" y="750" width="300" height="250" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="150" cy="800" r="25" fill="#bfdbfe"/>
+  <text x="140" y="810" font-family="Arial" font-size="24" fill="#4299e1">⌚</text>
+  <text x="200" y="810" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">24/7 Xizmat</text>
+  <text x="120" y="850" font-family="Arial" font-size="16" fill="#4a5568" width="260">Kunning istalgan vaqtida malakali shifokordan maslahat oling</text>
+
+  <rect x="450" y="750" width="300" height="250" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="500" cy="800" r="25" fill="#bfdbfe"/>
+  <text x="490" y="810" font-family="Arial" font-size="24" fill="#4299e1">💊</text>
+  <text x="550" y="810" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">Malakali shifokorlar</text>
+  <text x="470" y="850" font-family="Arial" font-size="16" fill="#4a5568" width="260">Faqat tasdiqlangan va tajribali mutaxassislar</text>
+
+  <rect x="800" y="750" width="300" height="250" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="850" cy="800" r="25" fill="#bfdbfe"/>
+  <text x="840" y="810" font-family="Arial" font-size="24" fill="#4299e1">💰</text>
+  <text x="900" y="810" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">Qulay narxlar</text>
+  <text x="820" y="850" font-family="Arial" font-size="16" fill="#4a5568" width="260">Klinikaga borish xarajatlaridan 70% tejang</text>
+
+  <!-- Popular Specialists -->
+  <text x="100" y="1100" font-family="Arial" font-size="36" font-weight="bold" fill="#2d3748">Mashhur mutaxassisliklar</text>
+  
+  <!-- Specialist Cards -->
+  <rect x="100" y="1150" width="200" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="200" cy="1200" r="30" fill="#bfdbfe"/>
+  <text x="185" y="1210" font-family="Arial" font-size="24" fill="#4299e1">❤️</text>
+  <text x="150" y="1270" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Kardiologiya</text>
+  <text x="160" y="1300" font-family="Arial" font-size="14" fill="#4a5568">45 shifokor</text>
+
+  <!-- Additional Specialist Cards -->
+  <rect x="350" y="1150" width="200" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="450" cy="1200" r="30" fill="#bfdbfe"/>
+  <text x="435" y="1210" font-family="Arial" font-size="24" fill="#4299e1">🧠</text>
+  <text x="400" y="1270" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Nevrologiya</text>
+  <text x="410" y="1300" font-family="Arial" font-size="14" fill="#4a5568">38 shifokor</text>
+
+  <rect x="600" y="1150" width="200" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="700" cy="1200" r="30" fill="#bfdbfe"/>
+  <text x="685" y="1210" font-family="Arial" font-size="24" fill="#4299e1">👶</text>
+  <text x="650" y="1270" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Pediatriya</text>
+  <text x="660" y="1300" font-family="Arial" font-size="14" fill="#4a5568">42 shifokor</text>
+
+  <rect x="850" y="1150" width="200" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="950" cy="1200" r="30" fill="#bfdbfe"/>
+  <text x="935" y="1210" font-family="Arial" font-size="24" fill="#4299e1">🦷</text>
+  <text x="900" y="1270" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Stomatologiya</text>
+  <text x="910" y="1300" font-family="Arial" font-size="14" fill="#4a5568">35 shifokor</text>
+
+  <!-- Reviews Section -->
+  <rect x="0" y="1450" width="1200" height="350" fill="#f8fafc"/>
+  <text x="100" y="1500" font-family="Arial" font-size="36" font-weight="bold" fill="#2d3748">Mijozlar sharhlari</text>
+  
+  <!-- Review Cards -->
+  <rect x="100" y="1550" width="300" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="150" cy="1600" r="30" fill="#4299e1"/>
+  <text x="140" y="1610" font-family="Arial" font-size="24" fill="#ffffff">AK</text>
+  <text x="200" y="1590" font-family="Arial" font-size="16" font-weight="bold" fill="#2d3748">Aziza Karimova</text>
+  <text x="200" y="1610" font-family="Arial" font-size="14" fill="#718096">2 kun oldin</text>
+  <text x="120" y="1640" font-family="Arial" font-size="18" fill="#4299e1">★★★★★</text>
+  <text x="120" y="1670" font-family="Arial" font-size="14" fill="#4a5568" width="260">Juda qulay va tez! Uydan chiqmasdan malakali shifokordan maslahat oldim. Rahmat!</text>
+
+  <!-- Second Review Card -->
+  <rect x="450" y="1550" width="300" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="500" cy="1600" r="30" fill="#4299e1"/>
+  <text x="490" y="1610" font-family="Arial" font-size="24" fill="#ffffff">SN</text>
+  <text x="550" y="1590" font-family="Arial" font-size="16" font-weight="bold" fill="#2d3748">Sardor Nizomov</text>
+  <text x="550" y="1610" font-family="Arial" font-size="14" fill="#718096">4 kun oldin</text>
+  <text x="470" y="1640" font-family="Arial" font-size="18" fill="#4299e1">★★★★★</text>
+  <text x="470" y="1670" font-family="Arial" font-size="14" fill="#4a5568" width="260">Professional yondashuv va tez javob. Shifokor juda yaxshi tushuntirdi.</text>
+
+  <!-- Third Review Card -->
+  <rect x="800" y="1550" width="300" height="200" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="850" cy="1600" r="30" fill="#4299e1"/>
+  <text x="840" y="1610" font-family="Arial" font-size="24" fill="#ffffff">MR</text>
+  <text x="900" y="1590" font-family="Arial" font-size="16" font-weight="bold" fill="#2d3748">Malika Rahimova</text>
+  <text x="900" y="1610" font-family="Arial" font-size="14" fill="#718096">1 hafta oldin</text>
+  <text x="820" y="1640" font-family="Arial" font-size="18" fill="#4299e1">★★★★★</text>
+  <text x="820" y="1670" font-family="Arial" font-size="14" fill="#4a5568" width="260">Platformadan juda mamnunman. Vaqtimni tejadi va sifatli maslahat oldim.</text>
+
+  <rect x="0" y="3000" width="1200" height="500" fill="#2d3748"/>
+  
+  <!-- Footer Content -->
+  <text x="100" y="3080" font-family="Arial" font-size="24" font-weight="bold" fill="#ffffff">ShifoLine</text>
+  <text x="100" y="3120" font-family="Arial" font-size="14" fill="#a0aec0" width="300">Professional onlayn tibbiy maslahat platformasi</text>
+
+  <!-- Footer Links -->
+  <text x="400" y="3080" font-family="Arial" font-size="18" font-weight="bold" fill="#ffffff">Xizmatlar</text>
+  <text x="400" y="3120" font-family="Arial" font-size="14" fill="#a0aec0">Video konsultatsiya</text>
+  <text x="400" y="3150" font-family="Arial" font-size="14" fill="#a0aec0">Chat konsultatsiya</text>
+  <text x="400" y="3180" font-family="Arial" font-size="14" fill="#a0aec0">Shoshilinch maslahat</text>
+
+  <text x="600" y="3080" font-family="Arial" font-size="18" font-weight="bold" fill="#ffffff">Kompaniya</text>
+  <text x="600" y="3120" font-family="Arial" font-size="14" fill="#a0aec0">Biz haqimizda</text>
+  <text x="600" y="3150" font-family="Arial" font-size="14" fill="#a0aec0">Shifokorlar jamoasi</text>
+  <text x="600" y="3180" font-family="Arial" font-size="14" fill="#a0aec0">Bog'lanish</text>
+
+  <text x="800" y="3080" font-family="Arial" font-size="18" font-weight="bold" fill="#ffffff">Qo'llab-quvvatlash</text>
+  <text x="800" y="3120" font-family="Arial" font-size="14" fill="#a0aec0">Yordam markazi</text>
+  <text x="800" y="3150" font-family="Arial" font-size="14" fill="#a0aec0">FAQ</text>
+  <text x="800" y="3180" font-family="Arial" font-size="14" fill="#a0aec0">Qo'llanma</text>
+
+  <!-- Social Media Icons -->
+  <circle cx="100" cy="3250" r="20" fill="#4299e1"/>
+  <text x="90" y="3258" font-family="Arial" font-size="16" fill="#ffffff">f</text>
+  
+  <circle cx="150" cy="3250" r="20" fill="#4299e1"/>
+  <text x="140" y="3258" font-family="Arial" font-size="16" fill="#ffffff">t</text>
+  
+  <circle cx="200" cy="3250" r="20" fill="#4299e1"/>
+  <text x="190" y="3258" font-family="Arial" font-size="16" fill="#ffffff">in</text>
+
+  <!-- Copyright -->
+  <text x="100" y="3400" font-family="Arial" font-size="14" fill="#a0aec0">© 2024 ShifoLine. Barcha huquqlar himoyalangan.</text>
+</svg>
+

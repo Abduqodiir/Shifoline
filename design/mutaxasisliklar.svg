@@ -1,0 +1,146 @@
+<svg viewBox="0 0 1200 3500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navigation Panel -->
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4299e1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3182ce;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Navigatsiya paneli -->
+  <rect x="0" y="0" width="1200" height="80" fill="#ffffff" filter="url(#shadow)"/>
+  <circle cx="60" cy="40" r="25" fill="url(#blueGradient)"/>
+  <text x="95" y="48" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">ShifoLine</text>
+  
+  <!-- Nav elementlari -->
+  <g class="nav-hover">
+    <text x="400" y="48" font-family="Arial" font-size="16" fill="#4a5568" cursor="pointer">Shifokorlar</text>
+    <text x="520" y="48" font-family="Arial" font-size="16" fill="#4a5568" cursor="pointer">Mutaxassisliklar</text>
+    <text x="660" y="48" font-family="Arial" font-size="16" fill="#4a5568" cursor="pointer">Yangiliklar</text>
+    <text x="760" y="48" font-family="Arial" font-size="16" fill="#4a5568" cursor="pointer">Yordam</text>
+  </g>
+  
+  <rect x="1030" y="25" width="100" height="40" rx="20" fill="url(#blueGradient)" cursor="pointer"/>
+  <text x="1060" y="50" font-family="Arial" font-size="16" fill="#ffffff">Kirish</text>
+
+  <!-- Asosiy Sarlavha -->
+  <text x="100" y="150" font-family="Arial" font-size="36" font-weight="bold" fill="#2d3748">Mutaxassisliklar</text>
+  
+  <!-- Qidiruv va Filterlar -->
+  <rect x="100" y="200" width="1000" height="40" rx="20" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="228" font-family="Arial" font-size="16" fill="#718096">Mutaxassislik yoki shifokor nomini kiriting...</text>
+  <text x="1050" y="228" font-family="Arial" font-size="20" fill="#4a5568">🔍</text>
+
+  <!-- Specialist Kartochkalari -->
+  <g class="specialist-card">
+    <!-- Kardiologiya -->
+    <rect x="100" y="250" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)" />
+    <circle cx="275" cy="320" r="60" fill="#bfdbfe"/>
+    <text x="250" y="330" font-family="Arial" font-size="36" fill="#4299e1">❤️</text>
+    <text x="200" y="400" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Kardiologiya</text>
+    <text x="200" y="430" font-family="Arial" font-size="16" fill="#4a5568">Yurak va qon tomir kasalliklari</text>
+    <text x="200" y="460" font-family="Arial" font-size="14" fill="#718096">45 malakali shifokor</text>
+    <rect x="200" y="490" width="150" height="40" rx="20" fill="url(#blueGradient)" cursor="pointer"/>
+    <text x="230" y="515" font-family="Arial" font-size="14" fill="#ffffff">Shifokorlar</text>
+  </g>
+
+  <g class="specialist-card">
+    <!-- Nevrologiya -->
+    <rect x="480" y="250" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+    <circle cx="655" cy="320" r="60" fill="#bfdbfe"/>
+    <text x="630" y="330" font-family="Arial" font-size="36" fill="#4299e1">🧠</text>
+    <text x="580" y="400" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Nevrologiya</text>
+    <text x="580" y="430" font-family="Arial" font-size="16" fill="#4a5568">Asab tizimi kasalliklari</text>
+    <text x="580" y="460" font-family="Arial" font-size="14" fill="#718096">38 malakali shifokor</text>
+    <rect x="580" y="490" width="150" height="40" rx="20" fill="url(#blueGradient)" cursor="pointer"/>
+    <text x="610" y="515" font-family="Arial" font-size="14" fill="#ffffff">Shifokorlar</text>
+  </g>
+
+  <g class="specialist-card">
+    <!-- Pediatriya -->
+    <rect x="860" y="250" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+    <circle cx="1035" cy="320" r="60" fill="#bfdbfe"/>
+    <text x="1010" y="330" font-family="Arial" font-size="36" fill="#4299e1">👶</text>
+    <text x="960" y="400" font-family="Arial" font-size="24" font-weight="bold" fill="#2d3748">Pediatriya</text>
+    <text x="960" y="430" font-family="Arial" font-size="16" fill="#4a5568">Bolalar kasalliklari</text>
+    <text x="960" y="460" font-family="Arial" font-size="14" fill="#718096">42 malakali shifokor</text>
+    <rect x="960" y="490" width="150" height="40" rx="20" fill="url(#blueGradient)" cursor="pointer"/>
+    <text x="990" y="515" font-family="Arial" font-size="14" fill="#ffffff">Shifokorlar</text>
+  </g>
+
+  <!-- Qo'shimcha Mutaxassisliklar -->
+  <g class="additional-specialties">
+    <text x="100" y="600" font-family="Arial" font-size="28" font-weight="bold" fill="#2d3748">Yana Mutaxassisliklar</text>
+    
+    <!-- Mini kartochkalar -->
+    <rect x="100" y="650" width="200" height="120" rx="10" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="120" y="700" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Terapiya</text>
+    <text x="120" y="730" font-family="Arial" font-size="14" fill="#4a5568">Umumiy kasalliklar</text>
+
+    <rect x="320" y="650" width="200" height="120" rx="10" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="340" y="700" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Ginekologiya</text>
+    <text x="340" y="730" font-family="Arial" font-size="14" fill="#4a5568">Ayollar salomatligi</text>
+
+    <rect x="540" y="650" width="200" height="120" rx="10" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="560" y="700" font-family="Arial" font-size="18" font-weight="bold" fill="#2d3748">Dermatologiya</text>
+    <text x="560" y="730" font-family="Arial" font-size="14" fill="#4a5568">Teri kasalliklari</text>
+  </g>
+
+  <g class="consultation-section">
+    <text x="100" y="1950" font-family="Arial" font-size="28" font-weight="bold" fill="#2d3748">Hoziroq Konsultatsiya Oling</text>
+    <text x="100" y="1990" font-family="Arial" font-size="16" fill="#4a5568">Mutaxassis shifokorlarimiz bilan onlayn yoki offline konsultatsiya oling</text>
+
+    <!-- Konsultatsiya Turlari -->
+    <g class="consultation-types">
+      <!-- Video Konsultatsiya -->
+      <rect x="100" y="2050" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+      <circle cx="275" cy="2150" r="60" fill="#e6f2ff"/>
+      <text x="250" y="2160" font-family="Arial" font-size="40" fill="#4299e1">🎥</text>
+      <text x="200" y="2230" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">Video Konsultatsiya</text>
+      <text x="200" y="2260" font-family="Arial" font-size="16" fill="#4a5568" width="250">Smartfon yoki kompyuterda shifokor bilan onlayn uchrashuv</text>
+      <rect x="200" y="2300" width="150" height="40" rx="20" fill="#4299e1"/>
+      <text x="230" y="2325" font-family="Arial" font-size="14" fill="#ffffff">Tanlash</text>
+
+      <!-- Offline Konsultatsiya -->
+      <rect x="480" y="2050" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+      <circle cx="655" cy="2150" r="60" fill="#e6f2ff"/>
+      <text x="630" y="2160" font-family="Arial" font-size="40" fill="#4299e1">🏥</text>
+      <text x="580" y="2230" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">Offline Konsultatsiya</text>
+      <text x="580" y="2260" font-family="Arial" font-size="16" fill="#4a5568" width="250">Shifoxonada shifokor bilan yuz-yuzga uchrashuv</text>
+      <rect x="580" y="2300" width="150" height="40" rx="20" fill="#4299e1"/>
+      <text x="610" y="2325" font-family="Arial" font-size="14" fill="#ffffff">Tanlash</text>
+
+      <!-- Telefon Konsultatsiya -->
+      <rect x="860" y="2050" width="350" height="300" rx="15" fill="#ffffff" filter="url(#shadow)"/>
+      <circle cx="1035" cy="2150" r="60" fill="#e6f2ff"/>
+      <text x="1010" y="2160" font-family="Arial" font-size="40" fill="#4299e1">📱</text>
+      <text x="960" y="2230" font-family="Arial" font-size="20" font-weight="bold" fill="#2d3748">Telefon Konsultatsiya</text>
+      <text x="960" y="2260" font-family="Arial" font-size="16" fill="#4a5568" width="250">Qisqa vaqt ichida shifokor qo'ng'iroqi</text>
+      <rect x="960" y="2300" width="150" height="40" rx="20" fill="#4299e1"/>
+      <text x="990" y="2325" font-family="Arial" font-size="14" fill="#ffffff">Tanlash</text>
+    </g>
+
+    <text x="100" y="2400" font-family="Arial" font-size="28" font-weight="bold" fill="#2d3748">Konsultatsiya Olish Bosqichlari</text>
+    
+    <g class="consultation-steps">
+      <circle cx="150" cy="2470" r="30" fill="#4299e1" stroke="#bfdbfe" stroke-width="5"/>
+      <text x="140" y="2480" font-family="Arial" font-size="20" fill="#ffffff">1</text>
+      <text x="200" y="2470" font-family="Arial" font-size="16" fill="#4a5568">Konsultatsiya turini tanlang</text>
+
+      <circle cx="150" cy="2540" r="30" fill="#4299e1" stroke="#bfdbfe" stroke-width="5"/>
+      <text x="140" y="2550" font-family="Arial" font-size="20" fill="#ffffff">2</text>
+      <text x="200" y="2540" font-family="Arial" font-size="16" fill="#4a5568">Mutaxassislik va shifokorni tanlang</text>
+
+      <circle cx="150" cy="2610" r="30" fill="#4299e1" stroke="#bfdbfe" stroke-width="5"/>
+      <text x="140" y="2620" font-family="Arial" font-size="20" fill="#ffffff">3</text>
+      <text x="200" y="2610" font-family="Arial" font-size="16" fill="#4a5568">Qulay vaqt va sanani belgilang</text>
+
+      <circle cx="150" cy="2680" r="30" fill="#4299e1" stroke="#bfdbfe" stroke-width="5"/>
+      <text x="140" y="2690" font-family="Arial" font-size="20" fill="#ffffff">4</text>
+      <text x="200" y="2680" font-family="Arial" font-size="16" fill="#4a5568">Ma'lumotlarni tasdiqlang</text>
+    </g>
+  </g>
+</svg>
