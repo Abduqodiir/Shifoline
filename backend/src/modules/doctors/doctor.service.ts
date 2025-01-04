@@ -3,6 +3,8 @@ import { Doctor } from "./models";
 import { Injectable } from "@nestjs/common";
 import { FileService } from "../file";
 import { CreateDoctorDto } from "./dtos";
+import { UpdateDoctorDto } from "./dtos/update-user.dto";
+import { UpdateDoctorRequest } from "./interfaces";
 
 @Injectable()
 export class DoctorService {
@@ -39,4 +41,46 @@ export class DoctorService {
             new_doctor
         }
     }
+
+    async updateDoctor(id: number, payload: UpdateDoctorRequest, file?: Express.Multer.File): Promise<{ message: string; updatedDoctor: Doctor }> {
+        let newFileName: string | undefined;
+        if (file) {
+            newFileName = await this.fileService.uploadFile(file);
+
+            const doctor = await this.doctorModel.findOne({ where: { id } });
+            if (doctor?.image) {
+                await this.fileService.deleteFile(doctor.image);
+            }
+
+            payload.image = newFileName;
+        }
+
+        await this.doctorModel.update(payload, {
+            where: { id },
+        });
+
+        const updatedDoctor = await this.doctorModel.findOne({ where: { id } });
+
+        return {
+            message: 'Doctor updated successfully',
+            updatedDoctor,
+        };
+    }
+
+
+    async deleteDoctor(id: number): Promise<{ message: string }> {
+        const foundedDoctor = await this.doctorModel.findByPk(id)
+
+        await this.fileService.deleteFile(foundedDoctor.image)
+        foundedDoctor.destroy()
+
+        return {
+            message: "Doctor deleted successfully"
+        }
+    }
+
+
+
+
+
 }
