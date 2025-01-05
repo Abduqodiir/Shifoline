@@ -8,6 +8,7 @@ export class UpdateUserDto implements Omit<CreateUserRequest, "image"> {
         required: true,
         example: 'Eshmat',
     })
+    @IsOptional()
     @IsString()
     fullname: string;
 
@@ -17,6 +18,7 @@ export class UpdateUserDto implements Omit<CreateUserRequest, "image"> {
         example: 'john.doe@gmail.com',
     })
     @IsEmail()
+    @IsOptional()
     email: string;
 
     @ApiProperty({
@@ -27,6 +29,7 @@ export class UpdateUserDto implements Omit<CreateUserRequest, "image"> {
         minLength: 13
     })
     @IsPhoneNumber("UZ")
+    @IsOptional()
     @Length(13, 13)
     phone_number: string;
 
@@ -36,6 +39,7 @@ export class UpdateUserDto implements Omit<CreateUserRequest, "image"> {
         example: 'password123',
     })
     @IsString()
+    @IsOptional()
     password: string;
 
     @ApiProperty({

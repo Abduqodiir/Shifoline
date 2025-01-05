@@ -9,6 +9,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 'Eshmat',
     })
     @IsString()
+    @IsOptional()
     fullname: string;
 
     @ApiProperty({
@@ -17,6 +18,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 5,
     })
     @IsNumberString()
+    @IsOptional()
     experience_years: number;
 
     @ApiProperty({
@@ -25,6 +27,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 'Cardiolog',
     })
     @IsString()
+    @IsOptional()
     speciality: string;
 
     @ApiProperty({
@@ -33,6 +36,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 150,
     })
     @IsNumberString()
+    @IsOptional()
     consultation_price: number;
 
     @ApiProperty({
@@ -41,6 +45,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 'English, Arabic',
     })
     @IsString()
+    @IsOptional()
     languages: string;
 
     @ApiProperty({
@@ -49,6 +54,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 5,
     })
     @IsNumberString()
+    @IsOptional()
     rating: number;
 
     @ApiProperty({
@@ -57,6 +63,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: 'john.doe@gmail.com',
     })
     @IsEmail()
+    @IsOptional()
     email: string;
 
     @ApiProperty({
@@ -67,6 +74,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         minLength: 13
     })
     @IsPhoneNumber("UZ")
+    @IsOptional()
     @Length(13, 13)
     phone: string;
 
@@ -76,6 +84,7 @@ export class UpdateDoctorDto implements Omit<CreateDoctorRequest, 'image'> {
         example: '123456',
     })
     @IsString()
+    @IsOptional()
     password: string;
 
     @ApiProperty({

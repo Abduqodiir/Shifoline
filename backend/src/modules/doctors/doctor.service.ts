@@ -3,7 +3,6 @@ import { Doctor } from "./models";
 import { Injectable } from "@nestjs/common";
 import { FileService } from "../file";
 import { CreateDoctorDto } from "./dtos";
-import { UpdateDoctorDto } from "./dtos/update-user.dto";
 import { UpdateDoctorRequest } from "./interfaces";
 
 @Injectable()

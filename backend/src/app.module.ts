@@ -1,5 +1,5 @@
 import { appConfig, databaseConfig } from '@config';
-import { Doctor, DoctorModule, FileModule, User, UserModule } from '@modules';
+import { Consultation, ConsultationModule, Doctor, DoctorModule, FileModule, User, UserModule } from '@modules';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
@@ -22,7 +22,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
             username: config.get<string>('databaseConfig.user'),
             password: config.get<string>('databaseConfig.password'),
             database: config.get<string>('databaseConfig.dbname'),
-            models: [Doctor,User],
+            models: [Doctor,User,Consultation],
             // sync:{force:true},
             synchronize: true,
             logging: console.log,
@@ -36,6 +36,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
     }),
     DoctorModule,
     UserModule,
+    ConsultationModule,
     FileModule,
   ],
   controllers: [],
