@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordField.setAttribute('type', type);
 
         const newIcon = type === 'password' 
-            ? '../public/images/eye.svg' 
-            : '../public/images/hide.svg';
+            ? '../public/images/hide.svg' 
+            : '../public/images/eye.svg';
         togglePasswordButton.querySelector('img').setAttribute('src', newIcon);
     });
 }); 
