@@ -8,3 +8,4 @@ export declare interface UpdateConsultationRequest {
     doctor_id?: number;
     user_id?: number;
 }
+    

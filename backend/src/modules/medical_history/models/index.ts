@@ -1,0 +1,1 @@
+export * from './medical_history.model'
