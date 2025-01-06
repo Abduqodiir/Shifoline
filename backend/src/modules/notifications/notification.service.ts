@@ -17,7 +17,7 @@ export class NotificationService {
 
     async createNotification(payload: CreateNotificationDto): Promise<{ message: string; newNotification: Notification }> {
         const newNotification = await this.notificationModel.create({
-            patient_id: payload.patient_id,
+            user_id: payload.user_id,
             message: payload.message,
             remind_at:payload.remind_at,
             is_completed: payload.is_completed

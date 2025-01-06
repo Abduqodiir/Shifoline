@@ -5,7 +5,7 @@ import { CreateMedicalHistoryDto, UpdateMedicalHistoryDto } from "./dtos";
 
 @Injectable()
 export class MedicalHistoryService {
-    constructor(@InjectModel(MedicalHistory) private medicalHistoryModel: typeof MedicalHistory) {}
+    constructor(@InjectModel(MedicalHistory) private medicalHistoryModel: typeof MedicalHistory) { }
 
     async getAllMedicalHistories(): Promise<MedicalHistory[]> {
         return await this.medicalHistoryModel.findAll();
@@ -16,7 +16,13 @@ export class MedicalHistoryService {
     }
 
     async createMedicalHistory(payload: CreateMedicalHistoryDto): Promise<{ message: string; newMedicalHistory }> {
-        const newMedicalHistory = await this.medicalHistoryModel.create(payload);
+        const newMedicalHistory = await this.medicalHistoryModel.create({
+            user_id: payload.user_id,
+            doctor_id: payload.doctor_id,
+            treatment_details: payload.treatment_details,
+            diagnosis_date: payload.diagnosis_date,
+            condition_name: payload.condition_name,
+        });
         return {
             message: "Medical history created successfully",
             newMedicalHistory,

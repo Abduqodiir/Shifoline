@@ -13,7 +13,7 @@ export class DoctorReview extends Model {
 
     @ForeignKey(() => User)
     @Column({ type: DataType.BIGINT, allowNull: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
-    patient_id: number;
+    user_id: number;
 
     @Column({ type: DataType.INTEGER, allowNull: false, validate: { min: 1, max: 5 } })
     rating: number;

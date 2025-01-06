@@ -2,7 +2,7 @@ import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize
 import { Doctor } from "src/modules/doctors";
 import { User } from "src/modules/users";
 
-export enum PaymentStatus {
+export enum ConsultationPaymentStatus {
     complete = "complete",
     incomplete = "incomplete",
     processing = 'processing',
@@ -22,8 +22,8 @@ export class Consultation extends Model {
     @Column({ type: DataType.TEXT, allowNull: false })
     recommendations: string;
 
-    @Column({ type: DataType.ENUM, values: [PaymentStatus.complete, PaymentStatus.incomplete, PaymentStatus.processing], defaultValue: PaymentStatus.incomplete })
-    payment_status: PaymentStatus;
+    @Column({ type: DataType.ENUM, values: [ConsultationPaymentStatus.complete, ConsultationPaymentStatus.incomplete, ConsultationPaymentStatus.processing], defaultValue: ConsultationPaymentStatus.incomplete })
+    payment_status: ConsultationPaymentStatus;
 
     @ForeignKey(() => Doctor)
     @Column({ type: DataType.BIGINT, allowNull: false, onDelete: "CASCADE", onUpdate: "CASCADE" })

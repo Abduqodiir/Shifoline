@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { DoctorReview } from "./models"; 
+import { DoctorReview } from "./models";
 import { CreateDoctorReviewDto, UpdateDoctorReviewDto } from "./dtos";
 
 @Injectable()
 export class DoctorReviewService {
-    constructor(@InjectModel(DoctorReview) private reviewModel: typeof DoctorReview) {}
+    constructor(@InjectModel(DoctorReview) private reviewModel: typeof DoctorReview) { }
 
     async getAllReviews(): Promise<DoctorReview[]> {
         return await this.reviewModel.findAll();
@@ -16,7 +16,12 @@ export class DoctorReviewService {
     }
 
     async createReview(payload: CreateDoctorReviewDto): Promise<DoctorReview> {
-        return await this.reviewModel.create(payload);
+        return await this.reviewModel.create({
+            doctor_id: payload.doctor_id,
+            user_id: payload.user_id,
+            rating: payload.rating,
+            review_text: payload.review_text
+        });
     }
 
     async updateReview(id: number, payload: UpdateDoctorReviewDto): Promise<DoctorReview> {

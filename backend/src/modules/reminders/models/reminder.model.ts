@@ -8,7 +8,7 @@ export class Reminder extends Model {
 
     @ForeignKey(() => User)
     @Column({ type: DataType.BIGINT, allowNull: false })
-    patient_id: number;
+    user_id: number;
 
     @Column({ type: DataType.TEXT, allowNull: false })
     message: string;
@@ -20,5 +20,5 @@ export class Reminder extends Model {
     is_completed: boolean;
 
     @BelongsTo(() => User)
-    patient: User;
+    user: User;
 }

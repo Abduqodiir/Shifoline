@@ -1,5 +1,5 @@
 import { IsDate, IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
-import { PaymentStatus } from "../models";
+import { ConsultationPaymentStatus } from "../models";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateConsultationDto {
@@ -33,14 +33,14 @@ export class UpdateConsultationDto {
     recommendations?: string;
 
     @ApiProperty({
-        enum: PaymentStatus,
+        enum: ConsultationPaymentStatus,
         description: "Updated payment status of the consultation",
-        example: PaymentStatus.processing,
+        example: ConsultationPaymentStatus.processing,
         required: false,
     })
     @IsOptional()
-    @IsEnum(PaymentStatus, { message: `Payment status must be one of: ${Object.values(PaymentStatus).join(", ")}` })
-    payment_status?: PaymentStatus;
+    @IsEnum(ConsultationPaymentStatus, { message: `Payment status must be one of: ${Object.values(ConsultationPaymentStatus).join(", ")}` })
+    payment_status?: ConsultationPaymentStatus;
 
     @ApiProperty({
         description: "Updated ID of the doctor handling the consultation",

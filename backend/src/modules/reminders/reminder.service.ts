@@ -5,7 +5,7 @@ import { CreateReminderDto, UpdateReminderDto } from "./dtos";
 
 @Injectable()
 export class ReminderService {
-    constructor(@InjectModel(Reminder) private reminderModel: typeof Reminder) {}
+    constructor(@InjectModel(Reminder) private reminderModel: typeof Reminder) { }
 
     async getAllReminders(): Promise<Reminder[]> {
         return await this.reminderModel.findAll();
@@ -16,7 +16,12 @@ export class ReminderService {
     }
 
     async createReminder(payload: CreateReminderDto): Promise<{ message: string; newReminder: Reminder }> {
-        const newReminder = await this.reminderModel.create(payload);
+        const newReminder = await this.reminderModel.create({
+            patient_id: payload.user_id,
+            message: payload.message,
+            remind_at: payload.remind_at,
+            is_completed: payload.is_completed,
+        });
         return {
             message: "Reminder created successfully",
             newReminder,

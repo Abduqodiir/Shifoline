@@ -5,7 +5,7 @@ export class UpdateNotificationDto {
     @ApiProperty({ description: "Patient ID", type: Number, required: false })
     @IsOptional()
     @IsNumber({}, { message: "Patient ID must be a number" })
-    patient_id?: number;
+    user_id?: number;
 
     @ApiProperty({ description: "Notification message", type: String, required: false })
     @IsOptional()

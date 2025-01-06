@@ -5,7 +5,7 @@ import { CreatePaymentDto, UpdatePaymentDto } from "./dtos";
 
 @Injectable()
 export class PaymentService {
-    constructor(@InjectModel(Payment) private paymentModel: typeof Payment) {}
+    constructor(@InjectModel(Payment) private paymentModel: typeof Payment) { }
 
     async getAllPayments(): Promise<Payment[]> {
         return await this.paymentModel.findAll();
@@ -16,7 +16,12 @@ export class PaymentService {
     }
 
     async createPayment(payload: CreatePaymentDto): Promise<{ message: string; newPayment: Payment }> {
-        const newPayment = await this.paymentModel.create(payload);
+        const newPayment = await this.paymentModel.create({
+            consultation_id: payload.consultation_id,
+            amount: payload.amount,
+            payment_method: payload.payment_method,
+            payment_status: payload.payment_status,
+        });
         return {
             message: "Payment created successfully",
             newPayment,

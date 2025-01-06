@@ -8,7 +8,7 @@ export class CreateDoctorReviewDto {
 
     @ApiProperty({ description: "ID of the patient", example: 202, required: true })
     @IsNumber({}, { message: "Patient ID must be a number" })
-    patient_id: number;
+    user_id: number;
 
     @ApiProperty({ description: "Rating between 1 and 5", example: 4, required: true })
     @IsInt({ message: "Rating must be an integer" })

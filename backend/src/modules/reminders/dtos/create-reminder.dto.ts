@@ -5,7 +5,7 @@ import { CreateReminderRequest } from "../interfaces";
 export class CreateReminderDto implements CreateReminderRequest {
     @ApiProperty({ description: "Patient ID", type: Number, required: true })
     @IsNumber({}, { message: "Patient ID must be a number" })
-    patient_id: number;
+    user_id: number;
 
     @ApiProperty({ description: "Reminder message", type: String, required: true })
     @IsString({ message: "Message must be a string" })
