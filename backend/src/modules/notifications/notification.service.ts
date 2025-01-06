@@ -5,7 +5,7 @@ import { CreateNotificationDto, UpdateNotificationDto } from "./dtos";
 
 @Injectable()
 export class NotificationService {
-    constructor(@InjectModel(Notification) private notificationModel: typeof Notification) {}
+    constructor(@InjectModel(Notification) private notificationModel: typeof Notification) { }
 
     async getAllNotifications(): Promise<Notification[]> {
         return await this.notificationModel.findAll();
@@ -16,7 +16,13 @@ export class NotificationService {
     }
 
     async createNotification(payload: CreateNotificationDto): Promise<{ message: string; newNotification: Notification }> {
-        const newNotification = await this.notificationModel.create(payload);
+        const newNotification = await this.notificationModel.create({
+            patient_id: payload.patient_id,
+            message: payload.message,
+            remind_at:payload.remind_at,
+            is_completed: payload.is_completed
+        });
+
         return {
             message: "Notification created successfully",
             newNotification,
