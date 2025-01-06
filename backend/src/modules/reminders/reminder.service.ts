@@ -2,22 +2,32 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { Reminder } from "./models";
 import { CreateReminderDto, UpdateReminderDto } from "./dtos";
+import { User } from "../users";
 
 @Injectable()
 export class ReminderService {
     constructor(@InjectModel(Reminder) private reminderModel: typeof Reminder) { }
 
     async getAllReminders(): Promise<Reminder[]> {
-        return await this.reminderModel.findAll();
+        return await this.reminderModel.findAll({
+            include: [
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
-
+    
     async getSingleReminder(id: number): Promise<Reminder> {
-        return await this.reminderModel.findOne({ where: { id } });
+        return await this.reminderModel.findOne({
+            where: { id },
+            include: [
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
 
     async createReminder(payload: CreateReminderDto): Promise<{ message: string; newReminder: Reminder }> {
         const newReminder = await this.reminderModel.create({
-            patient_id: payload.user_id,
+            user_id: payload.user_id,
             message: payload.message,
             remind_at: payload.remind_at,
             is_completed: payload.is_completed,

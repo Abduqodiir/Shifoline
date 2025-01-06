@@ -2,17 +2,43 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { Payment } from "./models";
 import { CreatePaymentDto, UpdatePaymentDto } from "./dtos";
+import { Consultation } from "../consultations";
+import { Doctor } from "../doctors";
+import { User } from "../users";
 
 @Injectable()
 export class PaymentService {
     constructor(@InjectModel(Payment) private paymentModel: typeof Payment) { }
 
     async getAllPayments(): Promise<Payment[]> {
-        return await this.paymentModel.findAll();
+        return await this.paymentModel.findAll({
+            include: [
+                {
+                    model: Consultation,
+                    attributes: ["id", "schedule_time", "payment_status"],
+                    include: [
+                        { model: Doctor, attributes: ["id", "fullname"] },
+                        { model: User, attributes: ["id", "fullname"] }
+                    ]
+                }
+            ]
+        });
     }
-
+    
     async getSinglePayment(id: number): Promise<Payment> {
-        return await this.paymentModel.findOne({ where: { id } });
+        return await this.paymentModel.findOne({
+            where: { id },
+            include: [
+                {
+                    model: Consultation,
+                    attributes: ["id", "schedule_time", "payment_status"],
+                    include: [
+                        { model: Doctor, attributes: ["id", "fullname"] },
+                        { model: User, attributes: ["id", "fullname"] }
+                    ]
+                }
+            ]
+        });
     }
 
     async createPayment(payload: CreatePaymentDto): Promise<{ message: string; newPayment: Payment }> {

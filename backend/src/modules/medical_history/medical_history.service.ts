@@ -2,17 +2,30 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { MedicalHistory } from "./models"
 import { CreateMedicalHistoryDto, UpdateMedicalHistoryDto } from "./dtos";
+import { Doctor } from "../doctors";
+import { User } from "../users";
 
 @Injectable()
 export class MedicalHistoryService {
     constructor(@InjectModel(MedicalHistory) private medicalHistoryModel: typeof MedicalHistory) { }
 
     async getAllMedicalHistories(): Promise<MedicalHistory[]> {
-        return await this.medicalHistoryModel.findAll();
+        return await this.medicalHistoryModel.findAll({
+            include: [
+                { model: Doctor, attributes: ["id", "fullname", "speciality"] },
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
-
+    
     async getSingleMedicalHistory(id: number): Promise<MedicalHistory> {
-        return await this.medicalHistoryModel.findOne({ where: { id } });
+        return await this.medicalHistoryModel.findOne({
+            where: { id },
+            include: [
+                { model: Doctor, attributes: ["id", "fullname", "speciality"] },
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
 
     async createMedicalHistory(payload: CreateMedicalHistoryDto): Promise<{ message: string; newMedicalHistory }> {

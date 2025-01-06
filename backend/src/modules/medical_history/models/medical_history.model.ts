@@ -7,11 +7,11 @@ export class MedicalHistory extends Model {
     @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
     id: number;
 
-    @Column({ type: DataType.BIGINT, allowNull: false })
+    @Column({ type: DataType.BIGINT, allowNull: false , onDelete: "CASCADE", onUpdate: "CASCADE" })
     @ForeignKey(() => User)
     user_id: number;
 
-    @Column({ type: DataType.BIGINT, allowNull: false })
+    @Column({ type: DataType.BIGINT, allowNull: false , onDelete: "CASCADE", onUpdate: "CASCADE" })
     @ForeignKey(() => Doctor)
     doctor_id: number;
 

@@ -2,17 +2,30 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { DoctorReview } from "./models";
 import { CreateDoctorReviewDto, UpdateDoctorReviewDto } from "./dtos";
+import { Doctor } from "../doctors";
+import { User } from "../users";
 
 @Injectable()
 export class DoctorReviewService {
     constructor(@InjectModel(DoctorReview) private reviewModel: typeof DoctorReview) { }
 
-    async getAllReviews(): Promise<DoctorReview[]> {
-        return await this.reviewModel.findAll();
+    async getAllDoctorReviews(): Promise<DoctorReview[]> {
+        return await this.reviewModel.findAll({
+            include: [
+                { model: Doctor, attributes: ["id", "fullname", "speciality"] },
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
-
-    async getSingleReview(id: number): Promise<DoctorReview> {
-        return await this.reviewModel.findByPk(id);
+    
+    async getSingleDoctorReview(id: number): Promise<DoctorReview> {
+        return await this.reviewModel.findOne({
+            where: { id },
+            include: [
+                { model: Doctor, attributes: ["id", "fullname", "speciality"] },
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
 
     async createReview(payload: CreateDoctorReviewDto): Promise<DoctorReview> {

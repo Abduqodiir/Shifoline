@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from "@nestjs/common";
 import { ConsultationService } from "./consultation.service";
 import { Consultation } from "./models";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
-import { UpdateConsultationDto } from "./dtos";
+import { CreateConsultationDto, UpdateConsultationDto } from "./dtos";
 
 @ApiTags("Consultations")
 @Controller('consultations')
@@ -12,15 +12,22 @@ export class ConsultationController {
     constructor(service: ConsultationService) { this.#_service = service }
 
     @Get()
-    @ApiOperation({ summary: "Hamma consultatsiyalarni olish" })
+    @ApiOperation({ summary: "Hamma konsultatsiyalarni olish" })
     async getAllConsultations(): Promise<Consultation[]> {
-        return await this.#_service.getAllConsultations()
+        return await this.#_service.getAllConsultations();
     }
 
-    @ApiOperation({ summary: "Yagona consultatsiyani olish" })
+    @ApiOperation({ summary: "Yagona konsultatsiyani olish" })
     @Get('/:id')
-    async getSingleConsultation(id: number): Promise<Consultation> {
-        return await this.#_service.getSingleConsultation(id)
+    async getSingleConsultation(@Param('id') id: number): Promise<Consultation> {
+        return await this.#_service.getSingleConsultation(id);
+    }
+
+    @ApiOperation({ summary: "Create a new consultation" })
+    @Post('/add')
+    async createConsultation(@Body() CreateConsultationPayload: CreateConsultationDto): Promise<{ message: string; new_consultation: Consultation }> {
+        const result = await this.#_service.createConsultation(CreateConsultationPayload);
+        return result;
     }
 
     @ApiOperation({ summary: "Consultatsiyani yangilash" })
@@ -33,7 +40,7 @@ export class ConsultationController {
 
         return {
             message: result.message,
-            updatedConsultation: result.updatedConsultation,    
+            updatedConsultation: result.updatedConsultation,
         };
     }
 

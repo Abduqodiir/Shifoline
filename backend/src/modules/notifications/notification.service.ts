@@ -2,17 +2,27 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { Notification } from "./models";
 import { CreateNotificationDto, UpdateNotificationDto } from "./dtos";
+import { User } from "../users";
 
 @Injectable()
 export class NotificationService {
     constructor(@InjectModel(Notification) private notificationModel: typeof Notification) { }
 
     async getAllNotifications(): Promise<Notification[]> {
-        return await this.notificationModel.findAll();
+        return await this.notificationModel.findAll({
+            include: [
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
-
+    
     async getSingleNotification(id: number): Promise<Notification> {
-        return await this.notificationModel.findOne({ where: { id } });
+        return await this.notificationModel.findOne({
+            where: { id },
+            include: [
+                { model: User, attributes: ["id", "fullname", "email"] }
+            ]
+        });
     }
 
     async createNotification(payload: CreateNotificationDto): Promise<{ message: string; newNotification: Notification }> {

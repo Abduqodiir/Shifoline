@@ -7,18 +7,18 @@ import { CreateReminderDto, UpdateReminderDto } from "./dtos";
 @ApiTags("Reminders")
 @Controller("reminders")
 export class ReminderController {
-    constructor(private readonly service: ReminderService) {}
+    constructor(private readonly service: ReminderService) { }
 
     @Get()
-    @ApiOperation({ summary: "Get all reminders" })
+    @ApiOperation({ summary: "Hamma reminderslarni olish" })
     async getAllReminders(): Promise<Reminder[]> {
-        return this.service.getAllReminders();
+        return await this.service.getAllReminders();
     }
 
-    @Get("/:id")
-    @ApiOperation({ summary: "Get a single reminder by ID" })
-    async getSingleReminder(@Param("id") id: string): Promise<Reminder> {
-        return this.service.getSingleReminder(+id);
+    @Get('/:id')
+    @ApiOperation({ summary: "Yagona reminder ma'lumotlarini olish" })
+    async getSingleReminder(@Param('id') id: number): Promise<Reminder> {
+        return await this.service.getSingleReminder(id);
     }
 
     @Post()

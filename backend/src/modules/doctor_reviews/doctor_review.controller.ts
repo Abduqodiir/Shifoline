@@ -9,12 +9,12 @@ export class DoctorReviewController {
 
     @Get()
     async getAllReviews(): Promise<DoctorReview[]> {
-        return await this.reviewService.getAllReviews();
+        return await this.reviewService.getAllDoctorReviews();
     }
 
     @Get('/:id')
     async getSingleReview(@Param('id') id: number): Promise<DoctorReview> {
-        return await this.reviewService.getSingleReview(+id);
+        return await this.reviewService.getSingleDoctorReview   (+id);
     }
 
     @Post()

@@ -7,18 +7,18 @@ import { CreateNotificationDto, UpdateNotificationDto } from "./dtos";
 @ApiTags("Notifications")
 @Controller("notifications")
 export class NotificationController {
-    constructor(private readonly service: NotificationService) {}
+    constructor(private readonly service: NotificationService) { }
 
     @Get()
-    @ApiOperation({ summary: "Get all notifications" })
+    @ApiOperation({ summary: "Hamma notificationslarni olish" })
     async getAllNotifications(): Promise<Notification[]> {
-        return this.service.getAllNotifications();
+        return await this.service.getAllNotifications();
     }
 
-    @Get("/:id")
-    @ApiOperation({ summary: "Get a single notification by ID" })
-    async getSingleNotification(@Param("id") id: string): Promise<Notification> {
-        return this.service.getSingleNotification(+id);
+    @Get('/:id')
+    @ApiOperation({ summary: "Yagona notification ma'lumotlarini olish" })
+    async getSingleNotification(@Param('id') id: number): Promise<Notification> {
+        return await this.service.getSingleNotification(id);
     }
 
     @Post()

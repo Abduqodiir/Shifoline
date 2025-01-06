@@ -7,7 +7,7 @@ export class Notification extends Model {
     id: number;
 
     @ForeignKey(() => User)
-    @Column({ type: DataType.BIGINT, allowNull: false })
+    @Column({ type: DataType.BIGINT, allowNull: false, onDelete: "CASCADE", onUpdate: "CASCADE"  })
     user_id: number;
 
     @Column({ type: DataType.TEXT, allowNull: false })

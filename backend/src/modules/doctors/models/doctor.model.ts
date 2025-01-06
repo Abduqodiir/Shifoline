@@ -26,7 +26,7 @@ export class Doctor extends Model {
     @Column({ type: DataType.STRING, allowNull: false })
     phone: string;
 
-    @Column({ type: DataType.TEXT, allowNull: false })
+    @Column({ type: DataType.STRING, allowNull: false })
     password: string;
 
     @Column({ type: DataType.TEXT, allowNull: false })

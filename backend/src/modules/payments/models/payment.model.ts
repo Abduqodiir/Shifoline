@@ -19,7 +19,7 @@ export class Payment extends Model {
     id: number;
 
     @ForeignKey(() => Consultation)
-    @Column({ type: DataType.BIGINT, allowNull: false })
+    @Column({ type: DataType.BIGINT, allowNull: false , onDelete: "CASCADE", onUpdate: "CASCADE" })
     consultation_id: number;
 
     @Column({ type: DataType.FLOAT, allowNull: false })
