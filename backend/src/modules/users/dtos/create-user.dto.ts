@@ -28,7 +28,8 @@ export class CreateUserDto implements Omit<CreateUserRequest, "image"> {
     })
     @IsPhoneNumber("UZ")
     @Length(13, 13)
-    phone_number: string;
+    @IsOptional()
+    phone_number ?: string;
 
     @ApiProperty({
         type: String,

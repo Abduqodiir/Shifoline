@@ -43,14 +43,14 @@ export class DoctorService {
 
     async updateDoctor(id: number, payload: UpdateDoctorRequest, file?: Express.Multer.File): Promise<{ message: string; updatedDoctor: Doctor }> {
         let newFileName: string | undefined;
+
         if (file) {
             newFileName = await this.fileService.uploadFile(file);
-
             const doctor = await this.doctorModel.findOne({ where: { id } });
+
             if (doctor?.image) {
                 await this.fileService.deleteFile(doctor.image);
             }
-
             payload.image = newFileName;
         }
 

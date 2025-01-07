@@ -1,14 +1,20 @@
-import { appConfig, databaseConfig } from '@config';
-import { Consultation, ConsultationModule, Doctor, DoctorModule, DoctorReview, DoctorReviewModule, FileModule, MedicalHistory, MedicalHistoryModule, Notification, NotificationModule, Payment, PaymentModule, Reminder, ReminderModule, User, UserModule } from '@modules';
+import { appConfig, databaseConfig, jwtCofig } from '@config';
+import { AuthModule, Consultation, ConsultationModule, Doctor, DoctorModule, DoctorReview, DoctorReviewModule, FileModule, MedicalHistory, MedicalHistoryModule, Notification, NotificationModule, Payment, PaymentModule, Reminder, ReminderModule, User, UserModule } from '@modules';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig, databaseConfig],
+      load: [appConfig, databaseConfig,jwtCofig],
+    }),
+    ServeStaticModule.forRoot({
+      serveRoot: "./uploads",
+      rootPath: "./uploads"
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
@@ -34,6 +40,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
         }
       },
     }),
+    AuthModule,
     DoctorModule,
     UserModule,
     ConsultationModule,
@@ -43,6 +50,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
     PaymentModule,
     ReminderModule,
     FileModule,
+    JwtModule
   ],
   controllers: [],
   providers: [],

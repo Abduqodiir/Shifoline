@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { Consultation } from "./models";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateConsultationDto, UpdateConsultationDto } from "./dtos";
-import { UpdateConsultationRequest } from "./interfaces";
 import { Doctor } from "../doctors";
 import { User } from "../users";
 

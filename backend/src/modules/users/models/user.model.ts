@@ -8,7 +8,7 @@ export class User extends Model {
     @Column({type: DataType.STRING,allowNull:false })
     email: string;
 
-    @Column({type: DataType.BIGINT,allowNull:false })
+    @Column({type: DataType.BIGINT,allowNull:true })
     phone_number: string;
 
     @Column({type: DataType.STRING,allowNull:true })

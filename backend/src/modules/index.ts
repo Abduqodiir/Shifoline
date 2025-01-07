@@ -7,4 +7,4 @@ export * from './medical_history'
 export * from './notifications'
 export * from './reminders'
 export * from './payments'
-
+export  * from './auth'

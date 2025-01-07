@@ -3,7 +3,6 @@ import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models";
 import { FileService } from "../file";
 import { CreateUserDto } from "./dtos";
-import { Multer } from "multer";
 import { UpdateUserRequest } from "./interfaces";
 
 @Injectable()
