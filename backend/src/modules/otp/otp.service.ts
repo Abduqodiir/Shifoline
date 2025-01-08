@@ -29,6 +29,10 @@ export class OtpService {
         return this.otpStorage.get(email);
     }
 
+    getStoredOtps(): Map<string, OtpData> {
+        return this.otpStorage;
+    }
+
     validateOtp(email: string, otp: string): { valid: boolean; reason?: string } {
         const storedOtpData = this.getOtp(email);
         if (!storedOtpData) {
@@ -46,7 +50,4 @@ export class OtpService {
     
         return { valid: true };
     }
-    
-
-
 }
