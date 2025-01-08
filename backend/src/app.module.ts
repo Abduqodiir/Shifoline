@@ -1,5 +1,5 @@
 import { appConfig, databaseConfig, jwtCofig } from '@config';
-import { AuthModule, Consultation, ConsultationModule, Doctor, DoctorModule, DoctorReview, DoctorReviewModule, FileModule, MedicalHistory, MedicalHistoryModule, Notification, NotificationModule, Payment, PaymentModule, Reminder, ReminderModule, User, UserModule } from '@modules';
+import { AuthModule, Consultation, ConsultationModule, Doctor, DoctorModule, DoctorReview, DoctorReviewModule, FileModule, MailerModule, MedicalHistory, MedicalHistoryModule, Notification, NotificationModule, OtpModule, Payment, PaymentModule, Reminder, ReminderModule, User, UserModule } from '@modules';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
@@ -50,7 +50,9 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     PaymentModule,
     ReminderModule,
     FileModule,
-    JwtModule
+    JwtModule,
+    MailerModule,
+    OtpModule
   ],
   controllers: [],
   providers: [],
