@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
 import { User } from "../users";
 import { JwtService } from "@nestjs/jwt";
@@ -8,75 +8,66 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-    constructor(@InjectModel(User) private userModel: typeof User, private jwtService: JwtService, private config: ConfigService) { }
+    constructor(
+        @InjectModel(User) private userModel: typeof User,
+        private jwtService: JwtService,
+        private config: ConfigService
+    ) {}
 
-    async Login(payload: LoginRequest): Promise<LoginResponse> {
-        const foundedUser = await this.userModel.findOne({
-            where: { email: payload.email }
-        })
-
-        if (!foundedUser) {
-            throw new NotFoundException("User not found!!!")
-        }
-
+    private async generateTokens(userId: number): Promise<{ accessToken: string; refreshToken: string }> {
         const accessToken = await this.jwtService.signAsync(
-            {
-                id: foundedUser.id,
-
-            },
+            { id: userId },
             {
                 expiresIn: this.config.get<number>("jwt.accessTime"),
-                secret: this.config.get<string>("jwt.accessKey")
+                secret: this.config.get<string>("jwt.accessKey"),
             }
-        )
+        );
 
         const refreshToken = await this.jwtService.signAsync(
-            {
-                id: foundedUser.id
-            },
+            { id: userId },
             {
                 expiresIn: this.config.get<string>("jwt.refreshTime"),
-                secret: this.config.get<string>("jwt.refreshKey")
+                secret: this.config.get<string>("jwt.refreshKey"),
             }
-        )
+        );
+
+        return { accessToken, refreshToken };
+    }
+
+    async Login(payload: LoginRequest): Promise<LoginResponse> {
+        const user = await this.userModel.findOne({ where: { email: payload.email } });
+
+        if (!user) {
+            throw new NotFoundException("User not found!");
+        }
+
+        const isPasswordValid = await bcrypt.compare(payload.password, user.password);
+        if (!isPasswordValid) {
+            throw new UnauthorizedException("Invalid credentials!");
+        }
+
+        const tokens = await this.generateTokens(user.id);
 
         return {
-            message: "You successfully loged in ✔",
-            accessToken,
-            refreshToken
-        }
+            message: "You successfully logged in ✔",
+            ...tokens,
+        };
     }
 
     async Register(payload: RegisterRequest): Promise<RegisterResponse> {
-        const password = payload.password
-        const hashed_password = await bcrypt.hash(password, 10)
-        const new_user = await this.userModel.create({ fullname: payload.fullname, email: payload.email, password: hashed_password })
+        const hashedPassword = await bcrypt.hash(payload.password, 10);
 
-        const accessToken = await this.jwtService.signAsync(
-            {
-                id: new_user.id,
+        const newUser = await this.userModel.create({
+            fullname: payload.fullname,
+            email: payload.email,
+            password: hashedPassword,
+        });
 
-            },
-            {
-                expiresIn: this.config.get<number>("jwt.accessTime"),
-                secret: this.config.get<string>("jwt.accessKey")
-            }
-        )
-
-        const refreshToken = await this.jwtService.signAsync(
-            {
-                id: new_user.id
-            },
-            {
-                expiresIn: this.config.get<string>("jwt.refreshTime"),
-                secret: this.config.get<string>("jwt.refreshKey")
-            }
-        )
+        const tokens = await this.generateTokens(newUser.id);
 
         return {
-            message: 'you are successfully loged in',
-            accessToken,
-            refreshToken,
-        }
+            message: "You are successfully registered",
+            ...tokens,
+        };
     }
 }
