@@ -3,10 +3,28 @@ import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import * as morgan from 'morgan';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
+import { ExceptionHandlerFilter } from './filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService)
+
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      exceptionFactory(errors) {
+        const errorMsgs = errors.map((err) =>
+          Object.values(err.constraints).join(', '),
+        );
+        throw new BadRequestException(errorMsgs.join(' && '));
+      },
+    }),
+  );
+
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+
+  app.useGlobalFilters(new ExceptionHandlerFilter());
 
   app.use(morgan('tiny'))
 
