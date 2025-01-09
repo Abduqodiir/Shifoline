@@ -4,15 +4,51 @@ import { Injectable } from "@nestjs/common";
 import { FileService } from "../file";
 import { CreateDoctorDto } from "./dtos";
 import { UpdateDoctorRequest } from "./interfaces";
+import { Op } from "sequelize";
 
 @Injectable()
 export class DoctorService {
     constructor(@InjectModel(Doctor) private doctorModel: typeof Doctor, private fileService: FileService) { }
 
-    async getAllDoctors(): Promise<Doctor[]> {
-        return await this.doctorModel.findAll();
-    }
+    async getAllDoctors(filters?: {
+        speciality?: string;
+        minPrice?: number;
+        maxPrice?: number;
+        rating?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ data: Doctor[]; total: number }> {
+        const where: any = {};
 
+        if (filters?.speciality) {
+            where.speciality = filters.speciality;
+        }
+
+        if (filters?.minPrice || filters?.maxPrice) {
+            where.consultation_price = {
+                ...(filters.minPrice && { [Op.gte]: filters.minPrice }),
+                ...(filters.maxPrice && { [Op.lte]: filters.maxPrice }),
+            };
+        }
+
+        if (filters?.rating) {
+            where.rating = { [Op.gte]: filters.rating };
+        }
+
+        const page = filters?.page ?? 1;
+        const limit = filters?.limit ?? 10;
+        const offset = (page - 1) * limit;
+
+        const total = await this.doctorModel.count({ where });
+
+        const data = await this.doctorModel.findAll({
+            where,
+            limit,
+            offset,
+        });
+
+        return { data, total };
+    }
     async getSingleDoctor(id: number): Promise<Doctor> {
         return await this.doctorModel.findOne({
             where: { id }

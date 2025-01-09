@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { DoctorService } from "./doctor.service";
 import { Doctor } from "./models";
-import { ApiConsumes, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiConsumes, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { CreateDoctorDto, UpdateDoctorDto } from "./dtos";
 
@@ -12,10 +12,31 @@ export class DoctorController {
 
     constructor(service: DoctorService) { this.#_service = service }
 
-    @ApiOperation({ summary: 'Barcha doktorlarni olish' })
+    @ApiOperation({ summary: 'Doktorlarni filtrlash va sahifalash' })
+    @ApiQuery({ name: 'speciality', required: false, description: 'Doktorning sohasi' })
+    @ApiQuery({ name: 'minPrice', required: false, description: 'Minimal narx (konsultatsiya uchun)' })
+    @ApiQuery({ name: 'maxPrice', required: false, description: 'Maksimal narx (konsultatsiya uchun)' })
+    @ApiQuery({ name: 'rating', required: false, description: 'Doktorning reytingi' })
+    @ApiQuery({ name: 'page', required: false, description: 'Qaysi sahifa (default: 1)' })
+    @ApiQuery({ name: 'limit', required: false, description: 'Har sahifadagi yozuvlar soni (default: 10)' })
     @Get()
-    async getAllDoctors(): Promise<Doctor[]> {
-        return this.#_service.getAllDoctors()
+    async getAllDoctors(
+        @Query('speciality') speciality?: string,
+        @Query('minPrice') minPrice?: string,
+        @Query('maxPrice') maxPrice?: string,
+        @Query('rating') rating?: string,
+        @Query('page') page?: string,
+        @Query('limit') limit?: string,
+    ): Promise<{ data: Doctor[]; total: number }> {
+        const filters = {
+            speciality,
+            minPrice: minPrice ? parseFloat(minPrice) : undefined,
+            maxPrice: maxPrice ? parseFloat(maxPrice) : undefined,
+            rating: rating ? parseFloat(rating) : undefined,
+            page: page ? parseInt(page) : undefined,
+            limit: limit ? parseInt(limit) : undefined,
+        };
+        return await this.#_service.getAllDoctors(filters);
     }
 
     @ApiOperation({ summary: 'Doctorni id orqali olish' })
