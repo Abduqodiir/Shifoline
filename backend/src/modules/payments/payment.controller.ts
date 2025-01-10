@@ -21,19 +21,19 @@ export class PaymentController {
         return this.service.getSinglePayment(+id);
     }
 
-    @Post()
+    @Post('/add')
     @ApiOperation({ summary: "Create a new payment" })
     async createPayment(@Body() payload: CreatePaymentDto) {
         return this.service.createPayment(payload);
     }
 
-    @Put("/:id")
+    @Put("/update/:id")
     @ApiOperation({ summary: "Update a payment by ID" })
     async updatePayment(@Param("id") id: string, @Body() payload: UpdatePaymentDto) {
         return this.service.updatePayment(+id, payload);
     }
 
-    @Delete("/:id")
+    @Delete("/delete/:id")
     @ApiOperation({ summary: "Delete a payment by ID" })
     async deletePayment(@Param("id") id: string) {
         const deleted = await this.service.deletePayment(+id);

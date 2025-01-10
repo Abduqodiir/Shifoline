@@ -21,19 +21,19 @@ export class ReminderController {
         return await this.service.getSingleReminder(id);
     }
 
-    @Post()
+    @Post('/add')
     @ApiOperation({ summary: "Create a new reminder" })
     async createReminder(@Body() payload: CreateReminderDto) {
         return this.service.createReminder(payload);
     }
 
-    @Put("/:id")
+    @Put("/update/:id")
     @ApiOperation({ summary: "Update a reminder by ID" })
     async updateReminder(@Param("id") id: string, @Body() payload: UpdateReminderDto) {
         return this.service.updateReminder(+id, payload);
     }
 
-    @Delete("/:id")
+    @Delete("/delete/:id")
     @ApiOperation({ summary: "Delete a reminder by ID" })
     async deleteReminder(@Param("id") id: string) {
         const deleted = await this.service.deleteReminder(+id);

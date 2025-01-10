@@ -31,7 +31,7 @@ export class ConsultationController {
     }
 
     @ApiOperation({ summary: "Consultatsiyani yangilash" })
-    @Put('/:id')
+    @Put('/update/:id')
     async updateConsultation(
         @Param('id') id: string,
         @Body() updatedConsultationPayload: UpdateConsultationDto
@@ -45,7 +45,7 @@ export class ConsultationController {
     }
 
     @ApiOperation({ summary: "Consultatsiyani o'chirish" })
-    @Delete("/:id")
+    @Delete("/delete/:id")
     async deleteConsultation(@Param('id') id: string): Promise<{ message: string }> {
         const consultation = await this.#_service.deleteConsultation(+id);
         if (!consultation) {

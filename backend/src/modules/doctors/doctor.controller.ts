@@ -62,7 +62,7 @@ export class DoctorController {
 
     @ApiOperation({ summary: 'Doktorni yangilash' })
     @ApiConsumes('multipart/form-data')
-    @Put('/:id')
+    @Put('/update/:id')
     @UseInterceptors(FileInterceptor('image')) 
     async updateDoctor(
         @Param('id') id: string,
@@ -78,7 +78,7 @@ export class DoctorController {
 
 
     @ApiOperation({ summary: "Doktorni o'chirish" })
-    @Delete('/:id')
+    @Delete('/delete/:id')
     @UseInterceptors(FileInterceptor('image'))
     async deleteDoctor(@Param('id') id: string): Promise<{ message: string }> {
         return this.#_service.deleteDoctor(+id)

@@ -6,6 +6,7 @@ import { FileService } from "../file";
 import { UserController } from "./user.controller";
 import { MedicalHistory } from "../medical_history";
 import { Consultation } from "../consultations";
+import { Notification } from "../notifications"; 
 import { Doctor } from "../doctors";
 import { MeService } from "./me.service";
 import { MeController } from "./me.controller";

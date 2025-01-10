@@ -21,19 +21,19 @@ export class NotificationController {
         return await this.service.getSingleNotification(id);
     }
 
-    @Post()
+    @Post('/add')
     @ApiOperation({ summary: "Create a new notification" })
     async createNotification(@Body() payload: CreateNotificationDto) {
         return this.service.createNotification(payload);
     }
 
-    @Put("/:id")
+    @Put("/update/:id")
     @ApiOperation({ summary: "Update a notification by ID" })
     async updateNotification(@Param("id") id: string, @Body() payload: UpdateNotificationDto) {
         return this.service.updateNotification(+id, payload);
     }
 
-    @Delete("/:id")
+    @Delete("/delete/:id")
     @ApiOperation({ summary: "Delete a notification by ID" })
     async deleteNotification(@Param("id") id: string) {
         const deleted = await this.service.deleteNotification(+id);

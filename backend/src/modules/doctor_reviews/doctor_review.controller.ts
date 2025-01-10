@@ -17,17 +17,17 @@ export class DoctorReviewController {
         return await this.reviewService.getSingleDoctorReview   (+id);
     }
 
-    @Post()
+    @Post("/add")
     async createReview(@Body() payload: CreateDoctorReviewDto): Promise<DoctorReview> {
         return await this.reviewService.createReview(payload);
     }
 
-    @Put('/:id')
+    @Put('/update/:id')
     async updateReview(@Param('id') id: number, @Body() payload: UpdateDoctorReviewDto): Promise<DoctorReview> {
         return await this.reviewService.updateReview(+id, payload);
     }
 
-    @Delete('/:id')
+    @Delete('/delete/:id')
     async deleteReview(@Param('id') id: number): Promise<{ message: string }> {
         const deleted = await this.reviewService.deleteReview(+id);
         if (!deleted) throw new Error(`Review with ID ${id} not found`);
