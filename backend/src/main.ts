@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import * as morgan from 'morgan';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
-import { ExceptionHandlerFilter } from './filters';
+import { ExceptionHandlerFilter } from '@filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

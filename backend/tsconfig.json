@@ -19,7 +19,10 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@config": ["./src/config"],
-      "@modules": ["./src/modules"]
+      "@modules": ["./src/modules"],
+      "@filters": ["./src/filters"],
+      "@decorators": ["./src/decorators"],
+      "@guards": ["./src/guards"]
     }
     
   }
