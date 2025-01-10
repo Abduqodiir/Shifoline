@@ -22,7 +22,8 @@
       "@modules": ["./src/modules"],
       "@filters": ["./src/filters"],
       "@decorators": ["./src/decorators"],
-      "@guards": ["./src/guards"]
+      "@guards": ["./src/guards"],
+      "@seeds": ["./src/seeds"]
     }
     
   }

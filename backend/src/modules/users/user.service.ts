@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { User } from "./models";
+import { User, UserRoles } from "./models";
 import { FileService } from "../file";
 import { CreateUserDto } from "./dtos";
 import { UpdateUserRequest } from "./interfaces";
@@ -27,6 +27,7 @@ export class UserService {
             email: payload.email,
             phone_number: payload.phone_number,
             password: payload.password,
+            role:payload?.role,
             image
         })
 
