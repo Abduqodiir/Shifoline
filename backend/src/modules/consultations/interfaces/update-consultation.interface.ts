@@ -1,7 +1,7 @@
 import { ConsultationPaymentStatus } from "../models";
 
 export declare interface UpdateConsultationRequest {
-    schedule_time?: Date; 
+    schedule_time?: string; 
     prescription?: string;
     recommendations?: string;
     payment_status?: ConsultationPaymentStatus;

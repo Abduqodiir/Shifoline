@@ -1,16 +1,22 @@
-import { IsDate, IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsDate, IsEnum, IsNumber, IsOptional, IsString, Matches } from "class-validator";
 import { ConsultationPaymentStatus } from "../models";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateConsultationDto {
     @ApiProperty({
-        description: "Updated schedule time in ISO 8601 format (e.g., 2025-01-05T10:00:00Z)",
-        type: Date,
-        required: false,
+        description: "Consultation schedule time in DD/MM/YYYY format (e.g., 25/12/2024)",
+        type: String,
+        example: "25/12/2024",
+        required: true,
     })
-    @IsOptional()
-    @IsDate({ message: "Schedule time must be a valid date" })
-    schedule_time?: Date;
+    @IsString({ message: "Schedule time must be a string" })
+    @Matches(
+        /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$/,
+        {
+            message: "Schedule time must be in DD/MM/YYYY format (e.g., 25/12/2024)"
+        }
+    )
+    schedule_time ?: string;
 
     @ApiProperty({
         description: "Updated prescription details for the consultation",

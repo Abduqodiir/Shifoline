@@ -28,6 +28,7 @@
     "@nestjs/sequelize": "^10.0.1",
     "@nestjs/serve-static": "^4.0.2",
     "@nestjs/swagger": "^8.1.0",
+    "@types/moment": "^2.11.29",
     "@types/morgan": "^1.9.9",
     "@types/multer": "^1.4.12",
     "@types/pg": "^8.11.10",

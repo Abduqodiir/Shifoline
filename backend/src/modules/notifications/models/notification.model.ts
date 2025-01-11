@@ -1,3 +1,4 @@
+import * as moment from "moment";
 import { Column, DataType, Model, Table, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { User } from "src/modules/users";
 
@@ -13,7 +14,24 @@ export class Notification extends Model {
     @Column({ type: DataType.TEXT, allowNull: false })
     message: string;
 
-    @Column({ type: DataType.DATE, allowNull: false })
+    @Column({
+            type: DataType.DATE,
+            allowNull: false,
+            get() {
+                const time = this.getDataValue('schedule_time');
+                return time ? moment(time).format('DD/MM/YYYY') : null;
+            },
+            set(value: string) {
+                if (value) {
+                    const parsedDate = moment(value, 'DD/MM/YYYY', true);
+                    if (parsedDate.isValid()) {
+                        this.setDataValue('schedule_time', parsedDate.toDate());
+                    } else {
+                        throw new Error('Invalid date format. Please use DD/MM/YYYY');
+                    }
+                }
+            }
+        })
     remind_at: Date;
 
     @Column({ type: DataType.BOOLEAN, defaultValue: false })

@@ -1,3 +1,4 @@
+import * as moment from "moment";
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Doctor } from "src/modules/doctors";
 import { User } from "src/modules/users";
@@ -13,7 +14,24 @@ export class Consultation extends Model {
     @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
     id: number;
 
-    @Column({ type: DataType.DATE, allowNull: false })
+    @Column({
+        type: DataType.DATE,
+        allowNull: false,
+        get() {
+            const time = this.getDataValue('schedule_time');
+            return time ? moment(time).format('DD/MM/YYYY') : null;
+        },
+        set(value: string) {
+            if (value) {
+                const parsedDate = moment(value, 'DD/MM/YYYY', true);
+                if (parsedDate.isValid()) {
+                    this.setDataValue('schedule_time', parsedDate.toDate());
+                } else {
+                    throw new Error('Invalid date format. Please use DD/MM/YYYY');
+                }
+            }
+        }
+    })
     schedule_time: Date;
 
     @Column({ type: DataType.TEXT, allowNull: false })

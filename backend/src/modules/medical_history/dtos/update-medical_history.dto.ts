@@ -1,4 +1,4 @@
-import { IsDate, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsDate, IsNumber, IsOptional, IsString, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateMedicalHistoryDto {
@@ -17,10 +17,20 @@ export class UpdateMedicalHistoryDto {
     @IsString({ message: "Treatment details must be a string" })
     treatment_details?: string;
 
-    @ApiProperty({ description: "Date of diagnosis", type: Date, required: false })
-    @IsOptional()
-    @IsDate({ message: "Diagnosis date must be a valid date" })
-    diagnosis_date?: Date;
+    @ApiProperty({
+            description: "Diagnosis time in DD/MM/YYYY format (e.g., 25/12/2024)",
+            type: String,
+            example: "25/12/2024",
+            required: true,
+        })
+        @IsString({ message: "Diagnosis time must be a string" })
+        @Matches(
+            /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$/,
+            {
+                message: "Diagnosis time must be in DD/MM/YYYY format (e.g., 25/12/2024)"
+            }
+        )
+    diagnosis_date?: string;
 
     @ApiProperty({ description: "Condition name", type: String, required: false })
     @IsOptional()

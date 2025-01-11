@@ -31,7 +31,7 @@ export class User extends Model {
         allowNull: false,
         defaultValue: UserRoles.user,
     })
-    role: UserRoles;
+    role ?: UserRoles;
 
 
     @HasMany(() => MedicalHistory)

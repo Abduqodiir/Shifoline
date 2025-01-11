@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsDate, IsNumber, IsOptional, IsString, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { CreateNotificationRequest } from "../interfaces";
 
@@ -11,9 +11,20 @@ export class CreateNotificationDto implements CreateNotificationRequest {
     @IsString({ message: "Message must be a string" })
     message: string;
 
-    @ApiProperty({ description: "Notification time in ISO 8601 format", type: Date, required: true })
-    @IsDate({ message: "Remind at must be a valid date" })
-    remind_at: Date;
+    @ApiProperty({
+            description: "Remind at time in DD/MM/YYYY format (e.g., 25/12/2024)",
+            type: String,
+            example: "25/12/2024",
+            required: true,
+        })
+        @IsString({ message: "Remind at time must be a string" })
+        @Matches(
+            /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$/,
+            {
+                message: "Remind at time must be in DD/MM/YYYY format (e.g., 25/12/2024)"
+            }
+        )
+    remind_at: string;
 
     @ApiProperty({ description: "Completion status of the notification", type: Boolean, required: false })
     @IsOptional()
