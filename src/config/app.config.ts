@@ -1,6 +1,6 @@
 export const appConfig = () => ({
     appConfig: {
-        port: parseInt(process.env.PORT) || 3000,
-        host: process.env.HOST 
+        port: parseInt(process.env.APP_PORT),
+        host: process.env.APP_HOST 
     }
 })

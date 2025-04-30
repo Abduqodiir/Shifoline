@@ -39,7 +39,7 @@ async function bootstrap() {
 
 
   await app.listen(configService.get<number>('appConfig.port'), () => {
-    console.log(`Uraaa server ${configService.get<number>('appConfig.port')} portda ishlamoqda...`);
+    console.log(`server listening on port ${configService.get<number>('appConfig.port')} ...`);
   });
 }
 bootstrap();
